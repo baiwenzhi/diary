@@ -3,6 +3,8 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { MessageService } from '../message.service';
+import { CommonService } from '../common.service';
+
 import { of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 
@@ -17,10 +19,11 @@ export class HeroesComponent implements OnInit {
 
   heroes: Hero[];
 
-  constructor(private heroService: HeroService, private messageService: MessageService) { }
+  constructor(private heroService: HeroService, private messageService: MessageService, private CommonService: CommonService) { }
   ngOnInit() {
     this.getHeroes();
     this.getParam.emit(this._getParam);
+    this.CommonService.initUser();
   }
 
   onSelect(hero: Hero): void {

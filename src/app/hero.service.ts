@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 
@@ -11,7 +12,7 @@ import { MessageService } from './message.service';
 })
 export class HeroService {
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService, private http: HttpClient) { }
 
   getHeroes(): Observable<Hero[]> {
     // TODO: send the message _after_ fetching the heroes

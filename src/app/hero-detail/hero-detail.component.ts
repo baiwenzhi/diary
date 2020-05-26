@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Hero } from '../hero';
+import { CommonService } from '../common.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -9,9 +10,16 @@ import { Hero } from '../hero';
 export class HeroDetailComponent implements OnInit{
   @Input() hero: Hero;
   
-  constructor() { }
+  constructor(private CommonService: CommonService) { }
 
   ngOnInit() {
+    if (this.CommonService.userinfo) {
+      
+    } else {
+      this.CommonService.userReady.subscribe((ee) => {
+        console.log(ee)
+      })
+    }
   }
 
 }
